@@ -14,7 +14,7 @@
 | 语言/框架 | Python 3.12 + FastAPI + SQLAlchemy（后端） / 原生 HTML + CSS + JS（前端，单文件） |
 | AI 引擎 | DeepTutor（另起进程，WS 协议） |
 | OS | Windows 10/11，PowerShell 5 |
-| 用户测试账号 | `demo` / `demo123` |
+| 用户测试账号 | `<TEST_USER>` / `<TEST_PASSWORD>`（本地自建，见第五节注册流程） |
 | 会话对话 | 中文，直接了当 |
 
 ## 二、端口与启动
@@ -146,7 +146,7 @@ for (let i=0; i<localStorage.length; i++) { const k=localStorage.key(i); if(k.st
 ```powershell
 # 测试后端 API
 $env:PYTHONIOENCODING='utf-8'
-$login = python -c "import json,urllib.request; r=urllib.request.Request('http://127.0.0.1:8004/api/auth/login', data=json.dumps({'username':'demo','password':'demo123'}).encode(), headers={'Content-Type':'application/json'}); print(json.loads(urllib.request.urlopen(r).read())['access_token'])"
+$login = python -c "import json,urllib.request,os; r=urllib.request.Request('http://127.0.0.1:8004/api/auth/login', data=json.dumps({'username':os.environ['SMART_USER'],'password':os.environ['SMART_PASS']}).encode(), headers={'Content-Type':'application/json'}); print(json.loads(urllib.request.urlopen(r).read())['access_token'])"
 $tok = $login
 curl.exe -s -H "Authorization: Bearer $tok" http://127.0.0.1:8004/api/visualize/kp/36
 
