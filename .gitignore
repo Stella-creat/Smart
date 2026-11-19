@@ -1,0 +1,32 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# ---- 本地数据库（含用户密码哈希与业务数据）----
+*.db
+*.sqlite3
+
+# ---- 本地知识库资源 / 上传文件 ----
+data/
+
+# ---- 密钥与环境变量（真实值只放本地 .env）----
+.env
+.env.*
+!.env.example
+
+# ---- 内部笔记 / 工具产物 ----
+.workbuddy/
+.vscode/
+.idea/
+
+# ---- 系统与临时文件 ----
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
